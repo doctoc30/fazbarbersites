@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>FAZ · barber sites</title>
-    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>FAZ // barber sites</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,9 +14,9 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #fffaf5;
-            color: #0a0a0a;
+            background: #0c0c0c;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #ededed;
             line-height: 1.2;
             -webkit-font-smoothing: antialiased;
         }
@@ -25,19 +25,21 @@
         .app {
             max-width: 480px;
             margin: 0 auto;
-            background: #fffaf5;
+            background: #0c0c0c;
             min-height: 100vh;
             position: relative;
+            border-left: 1px solid #1f1f1f;
+            border-right: 1px solid #1f1f1f;
         }
 
         /* Scroll animation */
-        .fade-up {
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
 
-        .fade-up.active {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
@@ -47,230 +49,241 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 20px 16px;
-            background: #fffaf5;
+            padding: 32px 24px 24px;
+            background: #0c0c0c;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #1f1f1f;
         }
 
         .logo {
             display: flex;
             align-items: baseline;
-            gap: 4px;
+            gap: 2px;
         }
 
         .logo-faz {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 3.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.2rem;
             font-weight: 900;
             letter-spacing: -3px;
-            color: #ff6b00;
+            color: #ff5e00;
             line-height: 1;
-            text-shadow: 3px 3px 0 rgba(255,107,0,0.1);
+            text-transform: uppercase;
         }
 
-        .logo-dot {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #0a0a0a;
-            line-height: 1;
+        .logo-slash {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #ff5e00;
+            opacity: 0.5;
+            margin: 0 2px;
         }
 
-        .wa-icon {
-            background: #25D366;
-            color: white;
+        .logo-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #888;
+            text-transform: uppercase;
+            margin-left: 4px;
+        }
+
+        .wa-link {
+            background: transparent;
+            border: 2px solid #ff5e00;
+            color: #ff5e00;
             width: 52px;
             height: 52px;
-            border-radius: 18px;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             text-decoration: none;
-            box-shadow: 0 8px 18px rgba(37, 211, 102, 0.25);
             transition: 0.2s;
         }
 
-        .wa-icon:hover {
-            transform: scale(1.05);
-            background: #20bd5a;
+        .wa-link:hover {
+            background: #ff5e00;
+            color: #0c0c0c;
         }
 
         /* Hero */
         .hero {
-            padding: 20px 20px 30px;
+            padding: 30px 24px 40px;
+            border-bottom: 1px solid #1f1f1f;
         }
 
         .hero h1 {
-            font-family: 'Clash Display', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 3.8rem;
             font-weight: 900;
-            letter-spacing: -3px;
+            letter-spacing: -4px;
             line-height: 1;
-            margin-bottom: 15px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .hero .big {
-            color: #ff6b00;
+        .hero .outline {
+            color: #ff5e00;
             display: block;
             font-size: 4.2rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-            max-width: 320px;
-            margin: 15px 0 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #aaa;
+            max-width: 300px;
+            margin: 20px 0 25px;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .pill {
-            background: #0a0a0a;
-            color: white;
+        .badge {
+            font-family: 'Space Mono', monospace;
+            background: transparent;
+            border: 2px solid #ff5e00;
+            color: #ff5e00;
             padding: 8px 20px;
-            border-radius: 40px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Feature card */
-        .feature {
-            background: #0a0a0a;
-            margin: 10px 20px 30px;
-            padding: 35px 25px;
-            border-radius: 40px;
-            color: white;
+        /* Manifesto */
+        .manifesto {
+            background: #111;
+            margin: 0 0 30px;
+            padding: 40px 24px;
+            border-top: 1px solid #ff5e00;
+            border-bottom: 1px solid #ff5e00;
             position: relative;
-            overflow: hidden;
         }
 
-        .feature::after {
-            content: "</>";
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 6rem;
-            font-weight: 900;
-            color: rgba(255,107,0,0.1);
-            font-family: 'Clash Display', sans-serif;
-        }
-
-        .feature h2 {
-            font-family: 'Clash Display', sans-serif;
+        .manifesto h2 {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
             font-weight: 900;
             letter-spacing: -2px;
-            margin-bottom: 15px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
             line-height: 1.1;
         }
 
-        .feature h2 span {
-            color: #ff6b00;
+        .manifesto h2 span {
+            color: #ff5e00;
         }
 
-        .feature p {
-            font-size: 1.1rem;
-            color: #ccc;
+        .manifesto p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+            color: #bbb;
+            line-height: 1.6;
             margin-bottom: 20px;
-            line-height: 1.4;
-            max-width: 280px;
+            max-width: 380px;
         }
 
-        .feature .big-text {
+        .manifesto .big {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8rem;
             font-weight: 900;
-            color: #ff6b00;
-            margin-top: 15px;
+            color: #ff5e00;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-top: 20px;
         }
 
-        /* Section title */
-        .section-title {
-            padding: 20px 20px 0;
-            font-family: 'Clash Display', sans-serif;
-            font-size: 2.2rem;
+        /* Section head */
+        .section-head {
+            padding: 20px 24px 10px;
+        }
+
+        .section-head h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
+            text-transform: uppercase;
         }
 
-        .section-title span {
-            color: #ff6b00;
+        .section-head h3 span {
+            color: #ff5e00;
         }
 
         .section-sub {
-            padding: 5px 20px 15px;
+            font-family: 'Space Mono', monospace;
+            padding: 0 24px 20px;
             color: #666;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-bottom: 2px solid #ff6b00;
-            margin: 0 20px 5px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #ff5e00;
+            margin: 0 24px 10px;
         }
 
         /* Concept grid */
-        .concepts {
+        .grid {
             display: flex;
             flex-direction: column;
             gap: 2px;
-            background: #ffe0cc;
+            background: #1a1a1a;
             padding: 0;
         }
 
-        .concept-card {
-            background: #fffaf5;
-            padding: 25px 20px;
+        .item {
+            background: #0c0c0c;
+            padding: 30px 24px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            border-bottom: 1px solid #ffd9c2;
+            gap: 20px;
+            border-bottom: 1px solid #1f1f1f;
         }
 
-        /* Mobile mock */
-        .mock {
+        /* Phone mock */
+        .phone {
             width: 100%;
-            aspect-ratio: 9/16;
-            max-width: 260px;
+            aspect-ratio: 9/19;
+            max-width: 240px;
             margin: 0 auto;
-            border-radius: 32px;
-            background: #141414;
+            background: #000;
+            border-radius: 36px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.15);
             border: 2px solid #2a2a2a;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.8);
         }
 
-        .mock-screen {
+        .screen {
             position: absolute;
             inset: 0;
-            background: linear-gradient(145deg, #1e1e1e, #151515);
+            background: #0a0a0a;
             display: flex;
             flex-direction: column;
         }
 
-        .mock-status {
-            padding: 12px 15px 5px;
+        .top-bar {
+            padding: 15px 15px 5px;
             display: flex;
             justify-content: space-between;
-            color: #888;
-            font-size: 0.6rem;
-            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            color: #555;
         }
 
-        .mock-header {
-            padding: 5px 15px 10px;
-            border-bottom: 1px solid #2a2a2a;
-        }
-
-        .mock-header .bar {
-            height: 12px;
-            width: 40%;
-            background: #333;
-            border-radius: 20px;
-            margin-bottom: 6px;
-        }
-
-        .mock-header .bar.short {
-            width: 25%;
+        .notch {
+            background: #ff5e00;
+            width: 30%;
+            height: 2px;
+            margin: 5px auto 10px;
         }
 
         .mock-content {
@@ -278,150 +291,161 @@
             padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .mock-block {
-            background: #2a2a2a;
-            height: 50px;
-            border-radius: 12px;
+        .mock-line {
+            height: 14px;
+            background: #1a1a1a;
+            border-radius: 0;
+            width: 100%;
         }
 
-        .mock-block.small {
-            height: 30px;
+        .mock-line.short {
+            width: 60%;
         }
 
-        .mock-block.medium {
-            height: 70px;
+        .mock-line.medium {
+            width: 80%;
         }
 
-        .mock-cta {
-            background: #ff6b00;
+        .mock-rect {
+            background: #1a1a1a;
+            height: 60px;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .mock-button {
+            background: #ff5e00;
+            color: #0c0c0c;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
             padding: 12px;
-            border-radius: 30px;
             text-align: center;
-            color: white;
-            font-weight: 900;
-            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-top: 5px;
-            letter-spacing: 0.5px;
         }
 
-        .concept-header {
+        .item-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .concept-code {
-            font-family: 'Clash Display', sans-serif;
+        .code {
+            font-family: 'Space Mono', monospace;
             font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-            color: #ff6b00;
-        }
-
-        .concept-code span {
-            color: #0a0a0a;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-left: 5px;
-        }
-
-        .want-btn {
-            background: #0a0a0a;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 40px;
-            text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            color: #ff5e00;
+            letter-spacing: -1px;
+        }
+
+        .code span {
+            color: #555;
+            font-size: 0.8rem;
+            margin-left: 8px;
+            letter-spacing: 1px;
+        }
+
+        .want {
+            background: transparent;
+            border: 2px solid #ff5e00;
+            color: #ff5e00;
+            padding: 10px 18px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: 0.2s;
-            border: none;
-            cursor: pointer;
         }
 
-        .want-btn i {
-            color: #ff6b00;
+        .want i {
             font-size: 1rem;
         }
 
-        .want-btn:hover {
-            background: #ff6b00;
+        .want:hover {
+            background: #ff5e00;
+            color: #0c0c0c;
         }
 
-        .want-btn:hover i {
-            color: white;
+        .desc {
+            font-family: 'Space Mono', monospace;
+            color: #888;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .concept-desc {
-            color: #555;
-            font-weight: 500;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        /* CTA */
-        .cta-section {
-            background: #ff6b00;
-            margin: 40px 20px 30px;
-            padding: 40px 25px;
-            border-radius: 50px;
+        /* Final CTA */
+        .final {
+            background: #ff5e00;
+            margin: 40px 24px 30px;
+            padding: 45px 25px;
             text-align: center;
-            color: white;
+            color: #0c0c0c;
         }
 
-        .cta-section h3 {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 2.5rem;
+        .final h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
+            text-transform: uppercase;
             line-height: 1;
             margin-bottom: 15px;
         }
 
-        .cta-section p {
-            font-size: 1.1rem;
+        .final p {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
             margin-bottom: 25px;
-            opacity: 0.95;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        .cta-button {
-            background: white;
-            color: #ff6b00;
+        .final-btn {
+            background: #0c0c0c;
+            color: #ff5e00;
             padding: 16px 30px;
-            border-radius: 60px;
             text-decoration: none;
-            font-weight: 900;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: 0.2s;
+            font-size: 1rem;
+            border: none;
         }
 
-        .cta-button i {
-            font-size: 1.5rem;
+        .final-btn i {
+            font-size: 1.3rem;
         }
 
-        .cta-button:hover {
-            transform: scale(1.02);
-            background: #f5f5f5;
+        .final-btn:hover {
+            background: #1a1a1a;
         }
 
         /* Footer */
         footer {
-            padding: 30px 20px 40px;
+            padding: 30px 24px 50px;
             text-align: center;
-            color: #999;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border-top: 1px solid #ffd9c2;
+            font-family: 'Space Mono', monospace;
+            color: #444;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid #1f1f1f;
         }
     </style>
 </head>
@@ -431,185 +455,169 @@
         <header>
             <div class="logo">
                 <span class="logo-faz">FAZ</span>
-                <span class="logo-dot">.</span>
+                <span class="logo-slash">//</span>
+                <span class="logo-text">barber</span>
             </div>
-            <a href="https://wa.me/441234567890" class="wa-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/441234567890" class="wa-link"><i class="fab fa-whatsapp"></i></a>
         </header>
 
         <!-- Hero -->
-        <div class="hero fade-up active">
-            <h1>MOST BARBERS <span class="big">LOSE CUTS</span></h1>
-            <p>No clear CTA = no booking. I build sites that fix that.</p>
-            <span class="pill">HTML · custom code · anything possible</span>
+        <div class="hero reveal active">
+            <h1>MOST BARBERS <span class="outline">LOSE CUTS</span></h1>
+            <p>No CTA = no booking. I build sites that convert.</p>
+            <div class="badge">HTML · custom code</div>
         </div>
 
-        <!-- Feature -->
-        <div class="feature fade-up">
+        <!-- Manifesto -->
+        <div class="manifesto reveal">
             <h2>ANYTHING YOU <span>VISION</span></h2>
             <p>I provide custom-built HTML websites. You tell me what you want — I code it from scratch. No templates. No limits.</p>
-            <div class="big-text">YOU DREAM IT → I CODE IT</div>
+            <div class="big">YOU DREAM IT → I CODE IT</div>
         </div>
 
-        <!-- Section title -->
-        <div class="section-title fade-up">
-            CONCEPT <span>WORK</span>
+        <!-- Section head -->
+        <div class="section-head reveal">
+            <h3>CONCEPT <span>//</span> WORK</h3>
         </div>
-        <div class="section-sub fade-up">↓ each is a custom idea — not a template</div>
+        <div class="section-sub reveal">↓ each is a custom idea — not a template</div>
 
-        <!-- Concepts -->
-        <div class="concepts">
+        <!-- Grid -->
+        <div class="grid">
             <!-- 1 -->
-            <div class="concept-card fade-up">
-                <div class="mock">
-                    <div class="mock-screen">
-                        <div class="mock-status">
+            <div class="item reveal">
+                <div class="phone">
+                    <div class="screen">
+                        <div class="top-bar">
                             <span>9:41</span>
                             <span>📶</span>
                         </div>
-                        <div class="mock-header">
-                            <div class="bar"></div>
-                            <div class="bar short"></div>
-                        </div>
+                        <div class="notch"></div>
                         <div class="mock-content">
-                            <div class="mock-block"></div>
-                            <div class="mock-block small"></div>
-                            <div class="mock-block medium"></div>
-                            <div class="mock-cta">BOOK NOW</div>
+                            <div class="mock-line"></div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-rect"></div>
+                            <div class="mock-button">BOOK NOW</div>
                         </div>
                     </div>
                 </div>
-                <div class="concept-header">
-                    <div class="concept-code">CODE: 1 <span>// bold booking</span></div>
-                    <a href="https://wa.me/441234567890" class="want-btn"><i class="fab fa-whatsapp"></i> want this?</a>
+                <div class="item-header">
+                    <div class="code">01 <span>// bold cta</span></div>
+                    <a href="https://wa.me/441234567890" class="want"><i class="fab fa-whatsapp"></i> want this</a>
                 </div>
-                <div class="concept-desc">Full-screen CTA · mobile-first · tap to book</div>
+                <div class="desc">Full-screen booking button · mobile-first</div>
             </div>
             <!-- 2 -->
-            <div class="concept-card fade-up">
-                <div class="mock">
-                    <div class="mock-screen">
-                        <div class="mock-status">
+            <div class="item reveal">
+                <div class="phone">
+                    <div class="screen">
+                        <div class="top-bar">
                             <span>9:41</span>
                             <span>📶</span>
                         </div>
-                        <div class="mock-header">
-                            <div class="bar"></div>
-                            <div class="bar short"></div>
-                        </div>
+                        <div class="notch"></div>
                         <div class="mock-content">
-                            <div class="mock-block small"></div>
-                            <div class="mock-block" style="height: 60px;"></div>
-                            <div class="mock-block small"></div>
-                            <div class="mock-cta">WHATSAPP</div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-line"></div>
+                            <div class="mock-line medium"></div>
+                            <div class="mock-button">WHATSAPP</div>
                         </div>
                     </div>
                 </div>
-                <div class="concept-header">
-                    <div class="concept-code">CODE: 2 <span>// direct chat</span></div>
-                    <a href="https://wa.me/441234567890" class="want-btn"><i class="fab fa-whatsapp"></i> want this?</a>
+                <div class="item-header">
+                    <div class="code">02 <span>// direct chat</span></div>
+                    <a href="https://wa.me/441234567890" class="want"><i class="fab fa-whatsapp"></i> want this</a>
                 </div>
-                <div class="concept-desc">One-tap WhatsApp · no forms · instant contact</div>
+                <div class="desc">One-tap WhatsApp · no forms · instant</div>
             </div>
             <!-- 3 -->
-            <div class="concept-card fade-up">
-                <div class="mock">
-                    <div class="mock-screen">
-                        <div class="mock-status">
+            <div class="item reveal">
+                <div class="phone">
+                    <div class="screen">
+                        <div class="top-bar">
                             <span>9:41</span>
                             <span>📶</span>
                         </div>
-                        <div class="mock-header">
-                            <div class="bar"></div>
-                            <div class="bar short"></div>
-                        </div>
+                        <div class="notch"></div>
                         <div class="mock-content">
-                            <div class="mock-block medium"></div>
-                            <div style="display: flex; gap: 8px;">
-                                <div class="mock-block small" style="width: 30%;"></div>
-                                <div class="mock-block small" style="width: 30%;"></div>
-                            </div>
-                            <div class="mock-cta">CALL NOW</div>
+                            <div class="mock-rect" style="height: 50px;"></div>
+                            <div class="mock-line"></div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-button">CALL NOW</div>
                         </div>
                     </div>
                 </div>
-                <div class="concept-header">
-                    <div class="concept-code">CODE: 3 <span>// tap to call</span></div>
-                    <a href="https://wa.me/441234567890" class="want-btn"><i class="fab fa-whatsapp"></i> want this?</a>
+                <div class="item-header">
+                    <div class="code">03 <span>// tap to call</span></div>
+                    <a href="https://wa.me/441234567890" class="want"><i class="fab fa-whatsapp"></i> want this</a>
                 </div>
-                <div class="concept-desc">Click-to-call · location · local SEO ready</div>
+                <div class="desc">Click-to-call · location · local SEO</div>
             </div>
             <!-- 4 -->
-            <div class="concept-card fade-up">
-                <div class="mock">
-                    <div class="mock-screen">
-                        <div class="mock-status">
+            <div class="item reveal">
+                <div class="phone">
+                    <div class="screen">
+                        <div class="top-bar">
                             <span>9:41</span>
                             <span>📶</span>
                         </div>
-                        <div class="mock-header">
-                            <div class="bar"></div>
-                            <div class="bar short"></div>
-                        </div>
+                        <div class="notch"></div>
                         <div class="mock-content">
-                            <div class="mock-block" style="height: 80px;"></div>
-                            <div class="mock-block small"></div>
-                            <div class="mock-cta">GALLERY</div>
+                            <div class="mock-line"></div>
+                            <div class="mock-rect" style="height: 80px;"></div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-button">GALLERY</div>
                         </div>
                     </div>
                 </div>
-                <div class="concept-header">
-                    <div class="concept-code">CODE: 4 <span>// fade gallery</span></div>
-                    <a href="https://wa.me/441234567890" class="want-btn"><i class="fab fa-whatsapp"></i> want this?</a>
+                <div class="item-header">
+                    <div class="code">04 <span>// fade gallery</span></div>
+                    <a href="https://wa.me/441234567890" class="want"><i class="fab fa-whatsapp"></i> want this</a>
                 </div>
-                <div class="concept-desc">Showcase your best cuts · mobile gallery</div>
+                <div class="desc">Showcase your best cuts · mobile gallery</div>
             </div>
             <!-- 5 -->
-            <div class="concept-card fade-up">
-                <div class="mock">
-                    <div class="mock-screen">
-                        <div class="mock-status">
+            <div class="item reveal">
+                <div class="phone">
+                    <div class="screen">
+                        <div class="top-bar">
                             <span>9:41</span>
                             <span>📶</span>
                         </div>
-                        <div class="mock-header">
-                            <div class="bar"></div>
-                            <div class="bar short"></div>
-                        </div>
+                        <div class="notch"></div>
                         <div class="mock-content">
-                            <div class="mock-block small"></div>
-                            <div class="mock-block small"></div>
-                            <div class="mock-block"></div>
-                            <div class="mock-cta">PRICING</div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-line"></div>
+                            <div class="mock-line short"></div>
+                            <div class="mock-button">PRICING</div>
                         </div>
                     </div>
                 </div>
-                <div class="concept-header">
-                    <div class="concept-code">CODE: 5 <span>// clear menu</span></div>
-                    <a href="https://wa.me/441234567890" class="want-btn"><i class="fab fa-whatsapp"></i> want this?</a>
+                <div class="item-header">
+                    <div class="code">05 <span>// clear menu</span></div>
+                    <a href="https://wa.me/441234567890" class="want"><i class="fab fa-whatsapp"></i> want this</a>
                 </div>
-                <div class="concept-desc">Price list · services · no confusion</div>
+                <div class="desc">Price list · services · no confusion</div>
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <div class="cta-section fade-up">
+        <!-- Final -->
+        <div class="final reveal">
             <h3>HAVE A VISION?</h3>
             <p>Tell me what you need — I'll code it from scratch.</p>
-            <a href="https://wa.me/441234567890" class="cta-button"><i class="fab fa-whatsapp"></i> FAZ ON WA</a>
+            <a href="https://wa.me/441234567890" class="final-btn"><i class="fab fa-whatsapp"></i> FAZ ON WA</a>
         </div>
 
         <!-- Footer -->
-        <footer class="fade-up">
-            <p>© 2026 FAZ · custom barber sites · no templates · no data collected</p>
+        <footer class="reveal">
+            <p>© 2026 FAZ // custom barber sites · no templates · no data collected</p>
         </footer>
     </div>
 
     <script>
-        // Scroll animation
-        const fadeElements = document.querySelectorAll('.fade-up');
+        const reveals = document.querySelectorAll('.reveal');
         
-        function checkFade() {
-            fadeElements.forEach(el => {
+        function checkReveal() {
+            reveals.forEach(el => {
                 const rect = el.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
                 if (rect.top < windowHeight - 80) {
@@ -618,9 +626,9 @@
             });
         }
         
-        window.addEventListener('load', checkFade);
-        window.addEventListener('scroll', checkFade);
-        checkFade();
+        window.addEventListener('load', checkReveal);
+        window.addEventListener('scroll', checkReveal);
+        checkReveal();
     </script>
 </body>
 </html>
